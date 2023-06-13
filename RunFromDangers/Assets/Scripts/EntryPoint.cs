@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using GameCore;
 using GlobalConstants;
 using UnityEngine;
@@ -7,7 +8,9 @@ public class EntryPoint : MonoBehaviour
 {
     private async void Start()
     {
-        await Core.Initialization();
+        Task initialization = Core.Initialization();
+        await initialization;
+
         SceneManager.LoadScene(ScenesNamesConstants.GAME_SCENE);
     }
 }
